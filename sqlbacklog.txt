@@ -1,0 +1,51 @@
+create table register(
+customerID int primary key,
+customer_name varchar(255) not null,
+email varchar(255) not null,
+password varchar(255) not null,
+address varchar(255) not null,
+contact int not null,
+position varchar(255) not null
+)
+
+create table customer(
+customerID int primary key,
+last_login varchar(255) not null,
+last_logout varchar (255) not null,
+updated_password varchar(255) not null,
+old_password varchar(255) not null,
+is_now_logged_in varchar(255) not null
+
+)
+
+create table product(
+productID int primary key,
+product_name varchar(255) not null,
+price int not null,
+quantity int not null,
+reserved varchar(255) not null,
+customerID int not null,
+foreign key (customerID) references register(customerID)
+
+)
+
+create table productlist(
+productID int primary key,
+product_name varchar(255) not null,
+price int not null
+)
+
+create table tempproductlist( 
+productID int primary key,
+product_name varchar(255) not null,
+price int not null
+)
+
+create table tran(
+transactionID int primary key,
+customerID int not null,
+productID varchar(255) not null,
+totalamount int not null,
+no_of_items int not null,
+foreign key (customerID) references register(customerID)
+)
